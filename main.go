@@ -73,9 +73,15 @@ func registerPatientHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(`{"message": "patient registered successfully"}`))
 }
 
+func HealthCheck(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("OK"))
+}
+
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/register", registerPatientHandler).Methods("POST")
+	http.HandleFunc("/healthz", HealthCheck)
 
 	port := os.Getenv("PORT")
 	if port == "" {

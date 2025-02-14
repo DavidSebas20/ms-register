@@ -50,9 +50,9 @@ jobs:
 
       - name: Copy microservice to domain repository
         run: |
-          rm -rf domain_repo/ms-login-jwt
-          mkdir -p domain_repo/ms-login-jwt
-          rsync -av --exclude='.git' --exclude='domain_repo' . domain_repo/ms-login-jwt/
+          rm -rf domain_repo/ms-register
+          mkdir -p domain_repo/ms-register
+          rsync -av --exclude='.git' --exclude='domain_repo' . domain_repo/ms-register/
 
       - name: Commit and push changes
         run: |
